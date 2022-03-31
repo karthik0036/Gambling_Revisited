@@ -10,6 +10,7 @@ public class GamblingSim {
 
 		int result;
 		int totalamount = 0;
+		int monthly_investment_amount = 0;
 //UC4 Calculate total amount for 20 days
 		for (int day = 1; day < DAYSINMONTH; day++) {
 			result = TOTAL_AMT;
@@ -19,10 +20,10 @@ public class GamblingSim {
 //UC2 Betting $1 so either wins or lose
 				if (game_check == 1) {
 					result = result + BET_AMT;
-					//System.out.println("won " + result);
+					// System.out.println("won " + result);
 				} else {
 					result = result - BET_AMT;
-					//System.out.println("lost " + result);
+					// System.out.println("lost " + result);
 				}
 			}
 			if (result > TOTAL_AMT) {
@@ -30,9 +31,17 @@ public class GamblingSim {
 			} else {
 				System.out.println("Result at end of day :" + day + " is Gambler lost $" + result);
 			}
+
+//UC5 Total month result by how much amount
+			monthly_investment_amount = monthly_investment_amount + TOTAL_AMT;
 			totalamount = totalamount + result;
 		}
-		System.out.println("Total Amount after 20 days " + totalamount);
+		System.out.println("Total Amount after a month " + totalamount);
+		System.out.println("Total investment Amount after a month " + monthly_investment_amount);
+		if (totalamount > monthly_investment_amount) {
+			System.out.println("Gambler won $" + (totalamount - monthly_investment_amount));
+		} else
+			System.out.println("Gambler lost $" + (monthly_investment_amount - totalamount));
 	}
 
 	public static void main(String[] args) {
