@@ -1,6 +1,7 @@
 package com.Bridge;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 //UC1 Initializing stake and betting amount
 public class GamblingSim {
@@ -13,8 +14,8 @@ public class GamblingSim {
 		int result;
 		int totalamount = 0;
 		int monthly_investment_amount = 0;
-		ArrayList<Integer> luckiest_day= new ArrayList<Integer>(); 
-		ArrayList<Integer> unluckiest_day= new ArrayList<Integer>();
+		ArrayList<Integer> luckiest_day = new ArrayList<Integer>();
+		ArrayList<Integer> unluckiest_day = new ArrayList<Integer>();
 //UC4 Calculate total amount for 20 days
 		for (int day = 1; day < DAYSINMONTH; day++) {
 			result = TOTAL_AMT;
@@ -30,7 +31,7 @@ public class GamblingSim {
 					// System.out.println("lost " + result);
 				}
 			}
-			//UC6 Luckiest and Unlucky days in month
+			// UC6 Luckiest and Unlucky days in month
 			if (result > TOTAL_AMT) {
 				System.out.println("Result at end of day :" + day + " is  Gambler Won its a lucky day $" + result);
 				luckiest_day.add(day);
@@ -38,9 +39,9 @@ public class GamblingSim {
 				System.out.println("Result at end of day :" + day + " is Gambler lost its unlucky day$" + result);
 				unluckiest_day.add(day);
 			}
-			
-			System.out.println("luckiest days"+" "+luckiest_day);
-			System.out.println("unluckiest days"+" "+unluckiest_day);
+
+			System.out.println("luckiest days" + " " + luckiest_day);
+			System.out.println("unluckiest days" + " " + unluckiest_day);
 
 //UC5 Total month result by how much amount
 			monthly_investment_amount = monthly_investment_amount + TOTAL_AMT;
@@ -59,8 +60,15 @@ public class GamblingSim {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Gambling game");
+		Scanner sc = new Scanner(System.in);
+		int user_decide = 1;
+//UC7 if player would like to continuee for next month or not
+		while (user_decide != 2) {
+			game();
+			System.out.println("Press 2 for quit game or any number to continue for next month ");
+			user_decide = sc.nextInt();
 
-		game();
+		}
 	}
 
 }
